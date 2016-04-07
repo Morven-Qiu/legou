@@ -1,6 +1,7 @@
 package com.fenghua.legou.dao;
 
-import com.fenghua.legou.base.dao.GenericDao;
+import com.fenghua.legou.core.GenericDao;
+import com.fenghua.legou.pojo.User;
 
 /**
  * 
@@ -8,7 +9,7 @@ import com.fenghua.legou.base.dao.GenericDao;
  * @param <T>
  * @param <PK>
  */
-public interface UserDao extends GenericDao<UserDao> {
+public interface UserDao  extends GenericDao<User>{
 	
 
 }

@@ -1,13 +1,17 @@
-package com.fenghua.legou.base.dao;
+package com.fenghua.legou.core;
 
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,16 +19,16 @@ import org.springframework.stereotype.Repository;
  * @author Fenghua Qiu
  * @param <T>
  */
-@Repository
+@Component("baseDao")
 public class BaseDao<T>{
 	
     protected static final Logger log = LoggerFactory.getLogger(BaseDao.class);
 	
     @Autowired
-	private Session session;
-    
-    private Session getCurrentSession(){
-    	return session.getSessionFactory().getCurrentSession();
+	private SessionFactory sessionFactory;
+	
+	private Session getCurrentSession(){
+    	return sessionFactory.getCurrentSession();
     }
 	/**
 	 * 查询一条记录
@@ -35,6 +39,15 @@ public class BaseDao<T>{
 	@SuppressWarnings("unchecked")
 	public T selectOne(T clazz,Serializable id) {
 		return (T) getCurrentSession().get(clazz.getClass() ,id);
+	}
+	/**
+	 * 延迟加载
+	 * @param clazz
+	 * @param id
+	 * @return
+	 */
+	public T load(T clazz,Serializable id){
+		return (T) getCurrentSession().load(clazz.getClass() ,id);
 	}
 
 	/**

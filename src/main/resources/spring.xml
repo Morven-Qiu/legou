@@ -8,6 +8,6 @@
 	<!-- 加载配置文件 -->
 	
 	<context:property-placeholder location="classpath:config.properties"/>
-	<context:component-scan base-package="com.dao.impl,com.sun.demo.service.impl" />
+	<context:component-scan base-package="com.fenghua.legou.service.impl,com.fenghua.legou.core,com.fenghua.legou.dao.impl" />
 
 </beans>

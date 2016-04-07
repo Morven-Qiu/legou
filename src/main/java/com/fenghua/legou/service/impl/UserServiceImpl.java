@@ -2,11 +2,10 @@ package com.fenghua.legou.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fenghua.legou.core.ServiceManager;
 import com.fenghua.legou.dao.UserDao;
 import com.fenghua.legou.pojo.User;
 import com.fenghua.legou.service.UserService;
@@ -17,18 +16,15 @@ import com.fenghua.legou.service.UserService;
  * @version 1.0
  */
 @Service("userService")
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl extends ServiceManager<User> implements UserService{
 	
-	@Resource
-	private UserDao<User,Object> userdao;
+	@Autowired
+	private UserDao userDao;
 	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<User> IsLogin(String username, String password) {
-		Object[] obj = new Object[]{username,password};
-		StringBuffer  buffer  = new StringBuffer();
-		buffer.append("from User where username=? and password=?");
-		return (List<User>) userdao.get(buffer.toString(),obj);
+	public List<User> IsLogin(User user) {
+		StringBuffer str = new StringBuffer();
+		str.append("from User u where u.username=? and u.password=?");
+	    return userDao.selectList(str.toString(), new Object[]{user.getUsername(),user.getPassword()});
 	}
 
 }

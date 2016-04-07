@@ -1,16 +1,14 @@
-package com.fenghua.legou.base.dao;
+package com.fenghua.legou.core;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
- * generic interface for DAO
- * 此接口提供DAO层基本数据库操作，所有DAO都必须实现此接口
- * @author fenghua
- * @param <T>
- * @param <PK>
+ * 该接口提供业务类基本操作，所有业务类都要实现此接口
+ * @author Fenghua Qiu
+ *
  */
-public interface GenericDao <E>{
+public interface Service<E> {
 	
 	/**
 	 * 插入

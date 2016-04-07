@@ -3,10 +3,10 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	<package name="fenghua" namespace="/" extends="struts-default">
-
-		<action name="user2" class="com.sun.demo.LoginController" method="login">
+	<package name="user" namespace="/" extends="struts-default">
+		<action name="login" class="com.fenghua.legou.action.UserAction" method="login">
 			<result name="success">/index.jsp</result>
+			<result name="success">/error.jsp</result>
 		</action>
 	</package>
 </struts>
