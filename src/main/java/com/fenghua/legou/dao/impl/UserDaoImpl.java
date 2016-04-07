@@ -3,57 +3,56 @@ package com.fenghua.legou.dao.impl;
 import java.io.Serializable;
 import java.util.List;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.fenghua.legou.base.dao.BaseDao;
+import com.fenghua.legou.core.BaseDao;
 import com.fenghua.legou.dao.UserDao;
 import com.fenghua.legou.pojo.User;
 
-@Repository("userDao")
+@Repository
 @SuppressWarnings("all")
 public class UserDaoImpl implements UserDao {
 
 	@Autowired
-	private BaseDao basedao ;
+	private BaseDao baseDao ;
 
 	@Override
-	public Serializable insert(UserDao e) {
-		return basedao.save(e);
+	public Serializable insert(User e) {
+		return baseDao.save(e);
 	}
 
 	@Override
-	public boolean delete(UserDao e) {
+	public boolean delete(User e) {
 		// TODO Auto-generated method stub
-		return basedao.delete(e);
+		return baseDao.delete(e);
 	}
 
 	@Override
-	public int update(UserDao e) {
-		return basedao.update(e);
+	public int update(User e) {
+		return baseDao.update(e);
+		
 	}
 
 	@Override
-	public UserDao selectOne(UserDao e,int id) {
-		return (UserDao) basedao.selectOne(UserDao.class, id);
+	public User selectOne(User e,int id) {
+		return (User) baseDao.selectOne(User.class, id);
 	}
 
 	@Override
-	public List<UserDao> selectList(String hql,Object[] param) {
-		return basedao.selectList(hql, param);
+	public List<User> selectList(String hql,Object[] param) {
+		return baseDao.selectList(hql, param);
 	}
 
 	@Override
 	public int deleteById(String sql,int id) {
-		return basedao.executeHql(sql, id);
+		return baseDao.executeHql(sql, id);
 	}
 
 	@Override
-	public UserDao selectById(String id) {
-		return (UserDao) basedao.selectOne(UserDao.class, id);
+	public User selectById(String id) {
+		return (User) baseDao.selectOne(User.class, id);
 	}
+
 
 }

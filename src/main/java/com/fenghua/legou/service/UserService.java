@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.fenghua.legou.pojo.User;
 
-public interface UserService {
+public interface UserService{
 
-	List<User> IsLogin(String username,String password);
+	List<User> IsLogin(User user);
 }

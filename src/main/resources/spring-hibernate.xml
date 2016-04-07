@@ -11,8 +11,8 @@
 		http://www.springframework.org/schema/aop 
 		http://www.springframework.org/schema/aop/spring-aop-4.1.xsd">
 
-	<!-- 配置数据源 使用的是c3p0数据源 -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"           
+	<!-- 配置数据源 使用的是Druid数据源 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"           
         destroy-method="close">
         <property name="driverClassName" value="${jdbc.driverclassname}"/>
 		<property name="url" value="${jdbc.url}" />
@@ -35,7 +35,7 @@
 			</props>
 		</property>
 		<!-- 扫描hibernate注解配置的entity -->
-		<property name="packagesToScan" value="com.sun.demo.entity" />
+		<property name="packagesToScan" value="com.fenghua.legou.pojo" />
 	</bean>
 
 <!-- 配置事务管理器 -->
@@ -67,7 +67,7 @@
 	<aop:config>
 		<!-- 配置切入点 -->
 		<aop:pointcut id="transactionPointcut"
-			expression="execution(* com.sun.demo.service.impl.*Impl.*(..))" />
+			expression="execution(* com.fenghua.legou.service.impl.*Impl.*(..))" />
 		<!-- 指定在txAdvice切入点应用txAdvice事务增强处理 -->
 		<aop:advisor pointcut-ref="transactionPointcut"
 			advice-ref="transactionAdvice" />
