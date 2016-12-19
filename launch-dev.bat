@@ -9,7 +9,7 @@ set path=%cd%
 copy "%path%\target\legou.war" "%TOMCAT_HOME%\webapps\"
 
 
-rem judge if there is debug mode
+rem judge if there is debug modefdsf
 if "%1%" == "debug" goto debug
 goto nodebug
 
